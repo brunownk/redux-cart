@@ -22,12 +22,12 @@ export const Container = styled.div`
 
   > div {
     display: flex;
-    justify-content: flex-end;
+    margin-left: 16px;
 
     span {
       display: flex;
       align-items: center;
-      justify-content: flex-end;
+      justify-content: center;
 
       margin-right: 16px;
 
@@ -44,15 +44,17 @@ export const Container = styled.div`
   }
 `;
 
-export const Navigation = styled.div`
+export const Navigation = styled.nav`
   display: flex;
   align-items: center;
   justify-content: center;
 
   height: 100%;
 
-  > a:not(:last-of-type) {
-    margin-right: 15px;
+  margin-right: 32px;
+
+  a + a {
+    margin-left: 5px;
   }
 `;
 

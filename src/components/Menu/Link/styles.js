@@ -2,10 +2,16 @@ import styled, { css } from 'styled-components';
 
 import { Link as RouterLink } from 'react-router-dom';
 
+import { Colors } from '~/styles/defaults';
+
 export const Container = styled.div`
   position: relative;
   padding-top: 38px;
   height: 100%;
+
+  & + div {
+    margin-left: 50px;
+  }
 
   :after,
   :before {
@@ -14,7 +20,7 @@ export const Container = styled.div`
     bottom: 0;
     width: 0px;
     height: 2px;
-    background-color: #ffffff;
+    background-color: ${Colors.aux};
     transition: width 200ms linear;
   }
 
@@ -43,20 +49,29 @@ export const Container = styled.div`
         &:after,
         &:before {
           width: 50%;
-          background-color: #249cf2;
+          background-color: ${Colors.links};
+        }
+
+        &:hover {
+          a {
+            color: ${Colors.links};
+          }
         }
 
         a {
+          color: ${Colors.links};
           font-size: 14px;
           line-height: 20px;
           font-weight: bold;
-          color: #249cf2;
         }
       `;
 
     return css`
       a {
-        color: #ffffff;
+        color: ${Colors.aux};
+        font-size: 14px;
+        line-height: 20px;
+        font-weight: bold;
       }
     `;
   }}
@@ -69,7 +84,6 @@ export const Link = styled(RouterLink)`
   user-select: none;
   text-decoration: none;
 
-  color: #73706d;
   font-size: 22px;
   font-weight: 400;
 
