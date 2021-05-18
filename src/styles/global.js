@@ -1,5 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
-import font, { Colors } from './defaults'
+
+import font, { Colors } from './defaults';
 
 export default createGlobalStyle`
   * {
@@ -16,8 +17,8 @@ export default createGlobalStyle`
   html, body, #root {
     width: 100%;
     height: 100%;
-    background: ${Colors.background};
-    color: ${Colors.primary};
+    background: ${Colors.white};
+    color: ${Colors.text};
   }
 
   body, input, button {

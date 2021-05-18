@@ -1,7 +1,7 @@
 import yup from '~/libs/yup';
 
 const schema = yup.object().shape({
-  email: yup.string().email().required().label('E-mail'),
+  search: yup.string().label('Busca invalida'),
 });
 
 export default schema;

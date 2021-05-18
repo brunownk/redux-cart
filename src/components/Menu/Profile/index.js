@@ -1,24 +1,14 @@
 import React from 'react';
 
-import { useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import AvatarImg from '~/assets/avatar-placeholder.png';
 
-import Logout from '../Logout';
-import Avatar from '../../Avatar'
-
-import { Container, Info, Name } from './styles';
+import Avatar from '../../Avatar';
+import { Container } from './styles';
 
 const Profile = () => {
-  const { user } = useSelector((state) => state.auth);
-  const history = useHistory();
-
   return (
-    <Container onClick={() => history.push('/profile')}>
-      <Avatar src={user.photo}/>
-      <Info>
-        <Name>{user.name}</Name>
-      </Info>
-      <Logout />
+    <Container>
+      <Avatar src={AvatarImg} size={48} />
     </Container>
   );
 };

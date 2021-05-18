@@ -1,6 +1,8 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 import { Link as RouterLink } from 'react-router-dom';
+
+import { Colors } from '~/styles/defaults';
 
 export const Container = styled.div`
   display: flex;
@@ -14,15 +16,39 @@ export const Container = styled.div`
   left: 0;
 
   width: 100%;
-  height: 65px;
+  height: 96px;
 
-  background-color: #262626;
+  background-color: ${Colors.menu_background};
 
-  z-index: 100;
+  > div {
+    display: flex;
+    justify-content: flex-end;
+
+    span {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+
+      margin-right: 16px;
+
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background-color: ${Colors.white};
+
+      img {
+        width: 21.33px;
+        height: 19.13px;
+      }
+    }
+  }
 `;
 
 export const Navigation = styled.div`
   display: flex;
+  align-items: center;
+  justify-content: center;
+
   height: 100%;
 
   > a:not(:last-of-type) {
@@ -30,115 +56,33 @@ export const Navigation = styled.div`
   }
 `;
 
-export const Logo = styled.img`
-  margin: auto 0px;
-  margin-right: 60px;
-
-  width: auto;
-  height: 32px;
-`;
-
-export const Menu = styled.div`
+export const Logo = styled(RouterLink)`
   display: flex;
-
-  flex-direction: column;
-
-  width: 100vw;
-  height: 100vh;
-
-  transition: width 500ms linear;
-  transition: height 250ms linear;
-  transition: display 250ms linear;
-
-  ${({ isToggled }) => {
-    if (!isToggled) {
-      return css`
-        width: 0;
-        height: 0;
-        display: none;
-      `;
-    }
-  }};
-
-  position: fixed;
-
-  top: 65px;
-
-  background: #262626;
-
-  z-index: 10000;
-`;
-
-export const MenuMobileContainer = styled.div`
-  display: flex;
-
   align-items: center;
+  margin-right: 150px;
 
-  height: 100%;
-
-  position: absolute;
-  right: 10px;
-
-  @media (min-width: 1024px) {
-    display: none;
+  img {
+    width: auto;
+    height: 30px;
   }
 `;
 
-export const MenuMobileTitle = styled(RouterLink)`
-  display: flex;
+export const IconCart = styled(RouterLink)`
+  margin: 0;
+`;
+
+export const OpitionsProfile = styled.div`
+  display: none;
   align-items: center;
-  justify-content: center;
+  cursor: pointer;
 
-  user-select: none;
-  text-decoration: none;
-
-  color: #ffffff;
-  font-size: 22px;
-  font-weight: normal;
-
-  transition: color 200ms linear;
-
-  margin-bottom: 20px;
-
-  :last-child {
-    margin-bottom: 0px;
+  @media (min-width: 980px) {
+    display: flex;
+    position: relative;
   }
-`;
 
-export const MenuMobileProfileContainer = styled.div`
-  width: 100%;
-
-  align-self: center;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  margin-bottom: 20px;
-
-  padding: 20px;
-
-  border-bottom-left-radius: 20px;
-  border-bottom-right-radius: 20px;
-`;
-
-export const Name = styled.h1`
-  font-size: 21px;
-  font-weight: 500;
-
-  color: #fff;
-
-  margin-left: 20px;
-`;
-
-export const Logout = styled.p`
-  font-style: normal;
-  font-weight: bold;
-  font-size: 18px;
-  line-height: 14px;
-  color: #0066ff;
-
-  text-align: center;
-
-  margin-top: 20px;
+  svg {
+    margin-left: 10px;
+    color: ${Colors.aux};
+  }
 `;

@@ -1,26 +1,20 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-import { Twirl as Hamburger } from 'hamburger-react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useLocation, useParams, useHistory } from 'react-router-dom';
+import { FiChevronDown } from 'react-icons/fi';
+import { useLocation, useParams } from 'react-router-dom';
 
-import logo from '~/assets/logos/02.svg';
-import { signOutRequest } from '~/store/modules/auth/actions';
+import logo from '~/assets/logos/01.svg';
+import CartIcon from '~/assets/svg/cartMenu.svg';
 
-import Avatar from '../Avatar'
+import InputSearch from '../InputSearch';
 import Link from './Link';
 import Profile from './Profile';
-
 import {
   Container,
   Navigation,
   Logo,
-  Menu as MenuMobile,
-  MenuMobileContainer,
-  MenuMobileTitle,
-  MenuMobileProfileContainer,
-  Name,
-  Logout,
+  IconCart,
+  OpitionsProfile,
 } from './styles';
 
 const links = [
@@ -28,32 +22,20 @@ const links = [
     to: '/',
     label: 'Dashboard',
   },
-  {
-    to: '/users',
-    label: 'Usuários',
-  },
 ];
 
 const Menu = () => {
   const { pathname } = useLocation();
   const { id } = useParams();
-  const dispatch = useDispatch();
-  const { user } = useSelector((state) => state.auth);
-
-  const [isToggled, setIsToggled] = useState(false);
-
-  const history = useHistory();
-
-  const handleClickLogout = () => {
-    dispatch(signOutRequest());
-    history.push('/login');
-  };
 
   return (
     <>
       <Container>
         <Navigation>
-          <Logo src={logo} />
+          <Logo to="/">
+            <img src={logo} alt="Razzo" />
+          </Logo>
+
           {links.map(({ to, label }) => (
             <Link
               key={to}
@@ -68,30 +50,27 @@ const Menu = () => {
               }
             />
           ))}
-          <MenuMobileContainer>
-            <Hamburger
-              size={20}
-              color="#fff"
-              toggled={isToggled}
-              toggle={() => setIsToggled(!isToggled)}
-            />
-          </MenuMobileContainer>
         </Navigation>
-        <Profile />
-      </Container>
-      <MenuMobile isToggled={isToggled}>
-        <MenuMobileProfileContainer onClick={() => { history.push('/profile'); setIsToggled(false) }}>
-          <Avatar src={user.photo} />
-          <Name>{user.name}</Name>
-        </MenuMobileProfileContainer>
-        {links.map(({ to, label }) => (
-          <MenuMobileTitle to={to} onClick={() => setIsToggled(false)}>
-            {label}
-          </MenuMobileTitle>
-        ))}
 
-        <Logout onClick={() => handleClickLogout()}>Sair</Logout>
-      </MenuMobile>
+        <InputSearch
+          maxWidth={266}
+          name="search"
+          placeholder="Busque por um produto"
+        />
+
+        <div>
+          <span>
+            <IconCart to="/cart">
+              <img src={CartIcon} alt="Rappido" />
+            </IconCart>
+          </span>
+
+          <OpitionsProfile>
+            <Profile />
+            <FiChevronDown />
+          </OpitionsProfile>
+        </div>
+      </Container>
     </>
   );
 };

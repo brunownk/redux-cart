@@ -4,6 +4,7 @@ import { Link as RouterLink } from 'react-router-dom';
 
 export const Container = styled.div`
   position: relative;
+  padding-top: 38px;
   height: 100%;
 
   :after,
@@ -32,7 +33,7 @@ export const Container = styled.div`
     }
 
     a {
-      color: #ffffff;
+      color: #73706d;
     }
   }
 
@@ -42,10 +43,14 @@ export const Container = styled.div`
         &:after,
         &:before {
           width: 50%;
+          background-color: #249cf2;
         }
 
         a {
-          color: #ffffff;
+          font-size: 14px;
+          line-height: 20px;
+          font-weight: bold;
+          color: #249cf2;
         }
       `;
 
@@ -58,24 +63,15 @@ export const Container = styled.div`
 `;
 
 export const Link = styled(RouterLink)`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  padding: 0 30px;
-
-  height: 100%;
+  width: 77px;
+  height: 20px;
 
   user-select: none;
   text-decoration: none;
 
-  color: #ffffff;
+  color: #73706d;
   font-size: 22px;
-  font-weight: normal;
+  font-weight: 400;
 
   transition: color 200ms linear;
-
-  @media (max-width: 1024px) {
-    display: none;
-  }
 `;

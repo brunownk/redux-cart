@@ -6,7 +6,6 @@ export const Container = styled.div`
   cursor: pointer;
 
   height: 100%;
-  padding: 0 20px 0 30px;
 
   @media (max-width: 1024px) {
     display: none;

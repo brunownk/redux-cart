@@ -15,5 +15,3 @@ ReactDOM.render(
   </Provider>,
   document.getElementById('root')
 );
-
-if (process.env.NODE_ENV !== 'development') console.log = function () {};
