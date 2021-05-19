@@ -42,6 +42,7 @@ Button.propTypes = {
   disabled: PropTypes.bool,
   fullWidth: PropTypes.bool,
   loading: PropTypes.bool,
+  variant: PropTypes.string,
 };
 
 export default Button;

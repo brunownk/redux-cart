@@ -5,18 +5,14 @@ import { Link as RouterLink } from 'react-router-dom';
 import { Colors } from '~/styles/defaults';
 
 export const Container = styled.div`
+  width: 100vw;
+  height: 96px;
+
   display: flex;
   align-items: center;
   justify-content: space-between;
 
-  padding: 0 25px;
-
-  position: fixed;
-  top: 0;
-  left: 0;
-
-  width: 100%;
-  height: 96px;
+  padding: 0 50px;
 
   background-color: ${Colors.menu_background};
 

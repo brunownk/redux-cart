@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 
 import { Colors } from '~/styles/defaults';
 
-
 export const Container = styled(Link)`
   display: flex;
   align-items: center;
@@ -13,7 +12,7 @@ export const Container = styled(Link)`
   user-select: none;
   text-decoration: none;
   transition: color 200ms linear;
-  
+
   font-weight: 500;
 
   font-size: ${({ size }) => size || '0.875rem'};
