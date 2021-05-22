@@ -1,5 +1,6 @@
 import React, { useCallback, useState } from 'react';
 
+import formatReal from "~/utils/formatReal";
 import PropTypes from 'prop-types';
 import { FiTrash2 } from 'react-icons/fi';
 
@@ -21,7 +22,7 @@ import {
   Options,
 } from './styles';
 
-const Card = ({ cart }) => {
+const Card = ({ cart, data }) => {
   const [countproduct, setCountProduct] = useState(0);
 
   const addProduct = useCallback(() => {
@@ -35,38 +36,39 @@ const Card = ({ cart }) => {
         : setCountProduct(countproduct - 1)
     );
   }, [countproduct]);
+
   return (
-    <Container type={cart}>
+    <Container cart={cart}>
       <ProductContainer>
         {cart ? <EstablishmentName>RodaPizza</EstablishmentName> : null}
 
-        <ProductContent type={cart}>
-          <LogoImg src={defaultImg} alt="Product" />
+        <ProductContent cart={cart}>
+          <LogoImg src={data?.imgs[0]?.url || defaultImg} alt="Product" />
 
-          <ProductInfo type={cart}>
-            <Title type={cart}>Pizza picanha com cheddar</Title>
+          <ProductInfo cart={cart}>
+            <Title cart={cart}>{data?.name || "Pizza picanha com cheddar"}</Title>
 
             {cart ? <Category>Pizza</Category> : null}
 
             {!cart ? (
               <>
-                <Description>Picanha + Cheddar + Borda de Catupiry</Description>
+                <Description>{data?.description}</Description>
                 <Description>Tempo de preparo: 55min</Description>
               </>
             ) : null}
 
-            <Price type={cart}>R$ 67,90</Price>
+            <Price cart={cart}>R$ {formatReal(data?.pricing) || '0'}</Price>
           </ProductInfo>
         </ProductContent>
       </ProductContainer>
 
       <Options>
-        <Select type={cart}>
-          <button type="button" onClick={removeProduct}>
+        <Select cart={cart}>
+          <button cart="button" onClick={removeProduct}>
             -
           </button>
           <p>{countproduct}</p>
-          <button type="button" onClick={addProduct}>
+          <button cart="button" onClick={addProduct}>
             +
           </button>
         </Select>

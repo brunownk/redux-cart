@@ -67,7 +67,7 @@ const InputSearch = ({
 export default InputSearch;
 
 InputSearch.defaultProps = {
-  maxWidth: true,
+  maxWidth: 'auto',
   marginAuto: false,
   height: 0,
   backgroundColor: '#FFFFFF',
@@ -75,7 +75,7 @@ InputSearch.defaultProps = {
 };
 
 InputSearch.propTypes = {
-  maxWidth: PropTypes.bool,
+  maxWidth: PropTypes.number,
   name: PropTypes.string.isRequired,
   placeholder: PropTypes.string.isRequired,
   marginAuto: PropTypes.bool,

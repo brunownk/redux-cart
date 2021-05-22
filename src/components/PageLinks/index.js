@@ -7,7 +7,7 @@ import { Container } from './styles';
 
 function PageLinks() {
   const { pathname } = useLocation();
-  const [, business] = pathname.split('/');
+  const [, , business, ,] = pathname.split('/');
 
   return (
     <Container>

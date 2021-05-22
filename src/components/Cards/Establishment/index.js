@@ -12,17 +12,18 @@ import {
   Category,
 } from './styles';
 
-const Card = () => {
+const Card = ({ data }) => {
   return (
     <Container>
-      <LogoImg src={defaultImg} alt="Logo" />
+      <LogoImg src={data?.assets?.logo || defaultImg} alt="Logo" />
       <Content>
         <Header>
-          <EstablishmentName>RodaPizza</EstablishmentName>
-          <Category>Pizzarias</Category>
+          <EstablishmentName>{data?.name}</EstablishmentName>
+          <Category>{data?.description}</Category>
         </Header>
-        <Description>Rua José Loureira da Silva, 1230</Description>
-        <Description>Centro</Description>
+        
+        <Description>{`Rua ${data?.address?.street_name}, ${data?.address?.street_number}`}</Description>
+        <Description>{data?.address?.neighborhood}</Description>
       </Content>
     </Container>
   );

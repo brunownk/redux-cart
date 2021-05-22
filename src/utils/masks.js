@@ -47,8 +47,8 @@ export default {
         'pt-BR',
         {
           minimumFractionDigits: 2,
-          // style: 'currency', To use R$ remove the comments
-          // currency: 'BRL',
+          style: 'currency',
+          currency: 'BRL',
         }
       );
 

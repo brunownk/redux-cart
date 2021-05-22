@@ -7,8 +7,8 @@ export const Container = styled.div`
   align-items: center;
   justify-content: space-between;
 
-  ${({ type }) => {
-    if (!type) {
+  ${({ cart }) => {
+    if (!cart) {
       return css`
         flex-direction: column;
 
@@ -44,8 +44,8 @@ export const ProductContainer = styled.div`
 export const ProductContent = styled.div`
   display: flex;
 
-  ${({ type }) => {
-    if (!type) {
+  ${({ cart }) => {
+    if (!cart) {
       return css`
         flex-direction: column;
         align-items: center;
@@ -70,8 +70,8 @@ export const ProductInfo = styled.div`
   flex-direction: column;
   justify-content: center;
 
-  ${({ type }) => {
-    if (!type) {
+  ${({ cart }) => {
+    if (!cart) {
       return css`
         align-items: center;
       `;
@@ -88,8 +88,8 @@ export const Title = styled.h1`
   line-height: 16px;
   color: #6d5d7a;
 
-  ${({ type }) => {
-    if (!type) {
+  ${({ cart }) => {
+    if (!cart) {
       return css`
         margin-bottom: 16px;
       `;
@@ -118,8 +118,8 @@ export const Description = styled.p`
 `;
 
 export const Price = styled.p`
-  ${({ type }) => {
-    if (!type) {
+  ${({ cart }) => {
+    if (!cart) {
       return css`
         font-size: 16px;
         line-height: 23px;
@@ -148,8 +148,8 @@ export const Select = styled.div`
   border-radius: 7px;
   background: ${Colors.links};
 
-  ${({ type }) => {
-    if (!type) {
+  ${({ cart }) => {
+    if (!cart) {
       return css`
         flex-direction: row;
         height: 40px;

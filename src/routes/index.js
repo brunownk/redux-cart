@@ -13,7 +13,7 @@ const Routes = () => {
     <BrowserRouter>
       <Switch>
         <PublicRoute path="/" component={Home} exact />
-        <PublicRoute path="/business/:id" component={Establishment} />
+        <PublicRoute path="/products/business/:id" component={Establishment} />
 
         <AuthRoute path="*" component={NotFound} />
       </Switch>
