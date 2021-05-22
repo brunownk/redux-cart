@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 
+import Grid from '@material-ui/core/Grid';
+
 import Button from '~/components/Button';
+import ProductCard from '~/components/Cards/Product';
 
 import {
   Container,
@@ -19,7 +22,17 @@ function Cart() {
   return (
     <Container>
       <Content>
-        <ProductsContainer />
+        <ProductsContainer>
+          <Grid container spacing={4}>
+            <Grid item xs={12}>
+              <ProductCard cart />
+            </Grid>
+
+            <Grid item xs={12}>
+              <ProductCard cart />
+            </Grid>
+          </Grid>
+        </ProductsContainer>
         <ValueContainer>
           <span>
             <p>Subtotal</p>

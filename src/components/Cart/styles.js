@@ -6,9 +6,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-
-  position: absolute;
-  right: 50px;
+  margin-right: 50px;
 
   button {
     height: 51px;
@@ -31,7 +29,9 @@ export const Content = styled.div`
   justify-content: space-between;
 `;
 
-export const ProductsContainer = styled.div``;
+export const ProductsContainer = styled.div`
+  padding: 26px 0;
+`;
 
 export const ValueContainer = styled.div`
   span {
@@ -43,13 +43,13 @@ export const ValueContainer = styled.div`
       margin-bottom: 32px;
 
       p {
-        padding-top: 12px;
-
         &:nth-child(1) {
+          padding-top: 20px;
           color: #282828;
         }
 
         &:nth-child(2) {
+          padding-top: 12px;
           border-top: 1px solid #e5e4e6;
           width: 361px;
           text-align: right;

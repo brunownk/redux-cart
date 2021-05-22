@@ -27,7 +27,7 @@ export default createGlobalStyle`
 
   body { -webkit-font-smoothing: antialiased; }
 
-  a { text-decoration: none; }
+  a { text-decoration: none; color: ${Colors.text}}
   ul { list-style: none; }
 
   img, svg { width: 100% }

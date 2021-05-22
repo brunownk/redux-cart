@@ -27,6 +27,14 @@ export const Container = styled.div`
     }
   }}
 
+${({ margin }) => {
+    if (margin) {
+      return css`
+        margin-bottom: ${margin}px;
+      `;
+    }
+  }}
+
 ${({ height }) => {
     if (height) {
       return css`
@@ -48,6 +56,7 @@ ${({ backgroundColor }) => {
 
   form {
     display: flex;
+    width: 100%;
   }
 `;
 

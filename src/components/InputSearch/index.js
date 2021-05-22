@@ -16,6 +16,7 @@ const InputSearch = ({
   marginAuto,
   height,
   backgroundColor,
+  margin,
 }) => {
   const [isFocused, setiIsFocused] = useState(false);
 
@@ -44,6 +45,7 @@ const InputSearch = ({
       isFocused={isFocused}
       marginAuto={marginAuto}
       height={height}
+      margin={margin}
     >
       <Form onSubmit={handleSubmitForm}>
         <Input
@@ -69,6 +71,7 @@ InputSearch.defaultProps = {
   marginAuto: false,
   height: 0,
   backgroundColor: '#FFFFFF',
+  margin: 0,
 };
 
 InputSearch.propTypes = {
@@ -78,4 +81,5 @@ InputSearch.propTypes = {
   marginAuto: PropTypes.bool,
   height: PropTypes.number,
   backgroundColor: PropTypes.string,
+  margin: PropTypes.number,
 };

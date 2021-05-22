@@ -5,7 +5,7 @@ import { Link as RouterLink } from 'react-router-dom';
 import { Colors } from '~/styles/defaults';
 
 export const Container = styled.div`
-  width: 100vw;
+  width: 100%;
   height: 96px;
 
   display: flex;

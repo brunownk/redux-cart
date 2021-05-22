@@ -1,7 +1,9 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  border-radius: 8px;
+  margin: 0 44px 0 50px;
 
-  background-color: #FFF;
+  .MuiGrid-container {
+    margin-bottom: 44px;
+  }
 `;
