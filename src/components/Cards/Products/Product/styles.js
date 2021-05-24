@@ -4,7 +4,7 @@ import { Colors } from '~/styles/defaults';
 
 import {
   Container as ProductContainer,
-  ProductInfo as Info,
+  ProductInfo,
   Title as ProductTitle,
   Select as ProductSelect,
 } from '../styles';
@@ -24,7 +24,7 @@ export const ProductContent = styled.div`
   align-items: center;
 `;
 
-export const ProductInfo = styled(Info)`
+export const Info = styled(ProductInfo)`
   align-items: center;
 `;
 

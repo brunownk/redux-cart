@@ -29,7 +29,7 @@ const ProductCart = ({ data, removeProduct, addProduct, countproduct }) => {
         <Content>
           <LogoImg src={data?.imgs[0]?.url || defaultImg} alt="Product" />
 
-          <Info >
+          <Info>
             <Title >{data?.name || "Pizza picanha com cheddar"}</Title>
             <Category>Pizza</Category>
             <Price >R$ {formatReal(data?.pricing) || '0'}</Price>

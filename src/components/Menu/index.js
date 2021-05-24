@@ -6,7 +6,6 @@ import { useLocation, useParams } from 'react-router-dom';
 import logo from '~/assets/logos/01.svg';
 import CartIcon from '~/assets/svg/cartMenu.svg';
 
-import InputSearch from '../InputSearch';
 import Link from './Link';
 import Profile from './Profile';
 import {
@@ -51,12 +50,6 @@ const Menu = () => {
             />
           ))}
         </Navigation>
-
-        <InputSearch
-          maxWidth={266}
-          name="search"
-          placeholder="Busque por um produto"
-        />
 
         <div>
           <span>

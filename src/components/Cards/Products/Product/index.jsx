@@ -6,7 +6,7 @@ import defaultImg from '~/assets/svg/pizza.svg';
 
 import {
   Container,
-  ProductInfo,
+  Info,
   ProductContent,
   Title,
   Description,
@@ -23,12 +23,12 @@ const Product = ({ data, addProduct, removeProduct, countproduct }) => {
         <ProductContent>
           <LogoImg src={data?.imgs[0]?.url || defaultImg} alt="Product" />
 
-          <ProductInfo>
+          <Info>
             <Title>{data?.name || "Pizza picanha com cheddar"}</Title>
             <Description>{data?.description}</Description>
             <Description>Tempo de preparo: 55min</Description>
             <Price>R$ {formatReal(data?.pricing) || '0'}</Price>
-          </ProductInfo>
+          </Info>
         </ProductContent>
       </ProductContainer>
 
