@@ -4,7 +4,7 @@ import Grid from '@material-ui/core/Grid';
 import { useLocation } from 'react-router';
 
 import EstablishmentCard from '~/components/Cards/Establishment';
-import ProductCard from '~/components/Cards/Product';
+import ProductCard from '~/components/Cards/Products';
 import Pagination from '~/components/Pagination';
 import api from '~/services/api';
 
@@ -21,7 +21,6 @@ function Establishment() {
     const { data } = await api.get(`/product/business/${businessId}`);
 
     setProducts(data.data);
-    console.log(data.data);
   }
 
   async function fetchEstablishment(businessId) {

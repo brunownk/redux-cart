@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import Grid from '@material-ui/core/Grid';
 
 import Button from '~/components/Button';
-import ProductCard from '~/components/Cards/Product';
+import ProductCard from '~/components/Cards/Products';
 
 import {
   Container,
