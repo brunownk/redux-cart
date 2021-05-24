@@ -2,7 +2,10 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   width: 100%;
-  margin: 0 23px 0 50px;
+
+  @media (min-width: 900px) {
+    margin-right: 23px;
+  }
 
   .MuiGrid-container {
     margin-bottom: 58px;

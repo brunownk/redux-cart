@@ -52,6 +52,11 @@ export const Navigation = styled.nav`
   a + a {
     margin-left: 5px;
   }
+
+  @media (max-width: 600px) {
+    width: 100%;
+    justify-content: space-between;
+  }
 `;
 
 export const Logo = styled(RouterLink)`
@@ -62,6 +67,10 @@ export const Logo = styled(RouterLink)`
   img {
     width: auto;
     height: 30px;
+  }
+
+  @media (max-width: 600px) {
+    margin-right: 32px;
   }
 `;
 

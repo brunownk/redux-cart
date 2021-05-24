@@ -3,10 +3,10 @@ import styled from 'styled-components';
 import { Colors } from '~/styles/defaults';
 
 export const Container = styled.div`
+  width: 423px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-right: 50px;
 
   button {
     height: 51px;
@@ -15,12 +15,15 @@ export const Container = styled.div`
       margin-top: 8px;
     }
   }
+
+  @media (max-width: 1050px) {
+    width: 100%;
+    margin-top: 30px;
+  }
 `;
 
 export const Content = styled.div`
-  width: 423px;
-  min-height: 633px;
-
+  width: 100%;
   margin-bottom: 35px;
   background-color: ${Colors.card_background};
 
@@ -31,6 +34,7 @@ export const Content = styled.div`
 
 export const ProductsContainer = styled.div`
   padding: 26px 0;
+  margin-bottom: 30px;
 `;
 
 export const ValueContainer = styled.div`
