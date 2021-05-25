@@ -6,4 +6,8 @@ export const Container = styled.div`
   .MuiGrid-container {
     margin-bottom: 44px;
   }
+
+  @media (min-width: 900px) {
+    margin-right: 46px;
+  }
 `;
