@@ -47,13 +47,13 @@ export const ValueContainer = styled.div`
 
     &:last-child {
       p {
-        padding-top: 12px;
-
         &:nth-child(1) {
+          padding-top: 13px;
           color: #282828;
         }
 
         &:nth-child(2) {
+          padding-top: 12px;
           border-top: 1px solid #e5e4e6;
           width: 361px;
           text-align: right;
