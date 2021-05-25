@@ -13,6 +13,8 @@ export const Container = styled.div`
 
   padding: 0 50px;
 
+  background: ${Colors.menu_background};
+
   > div {
     display: flex;
     margin-left: 16px;
@@ -83,5 +85,6 @@ export const OpitionsProfile = styled.div`
   svg {
     margin-left: 10px;
     color: ${Colors.aux};
+    border: none;
   }
 `;
