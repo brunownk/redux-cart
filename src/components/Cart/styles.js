@@ -38,22 +38,22 @@ export const ProductsContainer = styled.div`
 `;
 
 export const ValueContainer = styled.div`
+  padding: 0 8px 33px 25px;
+
   span {
     display: flex;
     align-items: center;
     justify-content: space-between;
 
     &:last-child {
-      margin-bottom: 32px;
-
       p {
+        padding-top: 12px;
+
         &:nth-child(1) {
-          padding-top: 20px;
           color: #282828;
         }
 
         &:nth-child(2) {
-          padding-top: 12px;
           border-top: 1px solid #e5e4e6;
           width: 361px;
           text-align: right;
@@ -69,14 +69,12 @@ export const ValueContainer = styled.div`
 
       &:nth-child(1) {
         color: ${Colors.text};
-        padding-left: 25px;
         margin-bottom: 12px;
       }
 
       &:nth-child(2) {
         color: #282828;
         font-weight: 500;
-        padding-right: 8px;
       }
     }
   }
