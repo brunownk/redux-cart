@@ -7,14 +7,11 @@ import { Colors } from '~/styles/defaults';
 export const Container = styled.div`
   width: 100%;
   height: 96px;
-
   display: flex;
   align-items: center;
   justify-content: space-between;
 
   padding: 0 50px;
-
-  background-color: ${Colors.menu_background};
 
   > div {
     display: flex;
@@ -53,7 +50,7 @@ export const Navigation = styled.nav`
     margin-left: 5px;
   }
 
-  @media (max-width: 600px) {
+  @media (max-width: 670px) {
     width: 100%;
     justify-content: space-between;
   }
@@ -69,7 +66,7 @@ export const Logo = styled(RouterLink)`
     height: 30px;
   }
 
-  @media (max-width: 600px) {
+  @media (max-width: 670px) {
     margin-right: 32px;
   }
 `;
@@ -79,14 +76,9 @@ export const IconCart = styled(RouterLink)`
 `;
 
 export const OpitionsProfile = styled.div`
-  display: none;
+  display: flex;
   align-items: center;
   cursor: pointer;
-
-  @media (min-width: 980px) {
-    display: flex;
-    position: relative;
-  }
 
   svg {
     margin-left: 10px;

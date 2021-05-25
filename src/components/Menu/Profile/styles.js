@@ -6,10 +6,6 @@ export const Container = styled.div`
   cursor: pointer;
 
   height: 100%;
-
-  @media (max-width: 1024px) {
-    display: none;
-  }
 `;
 
 export const Info = styled.div`

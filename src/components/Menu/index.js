@@ -28,43 +28,41 @@ const Menu = () => {
   const { id } = useParams();
 
   return (
-    <>
-      <Container>
-        <Navigation>
-          <Logo to="/">
-            <img src={logo} alt="Razzo" />
-          </Logo>
+    <Container>
+      <Navigation>
+        <Logo to="/">
+          <img src={logo} alt="Razzo" />
+        </Logo>
 
-          {links.map(({ to, label }) => (
-            <Link
-              key={to}
-              to={to}
-              label={label}
-              className="link"
-              active={
-                pathname === to ||
-                pathname === `${to}/${id}` ||
-                pathname === `${to}/create` ||
-                pathname === `${to}/${id}`
-              }
-            />
-          ))}
-        </Navigation>
+        {links.map(({ to, label }) => (
+          <Link
+            key={to}
+            to={to}
+            label={label}
+            className="link"
+            active={
+              pathname === to ||
+              pathname === `${to}/${id}` ||
+              pathname === `${to}/create` ||
+              pathname === `${to}/${id}`
+            }
+          />
+        ))}
+      </Navigation>
 
-        <div>
-          <span>
-            <IconCart to="/cart">
-              <img src={CartIcon} alt="Rappido" />
-            </IconCart>
-          </span>
+      <div>
+        <span>
+          <IconCart to="/cart">
+            <img src={CartIcon} alt="Rappido" />
+          </IconCart>
+        </span>
 
-          <OpitionsProfile>
-            <Profile />
-            <FiChevronDown />
-          </OpitionsProfile>
-        </div>
-      </Container>
-    </>
+        <OpitionsProfile>
+          <Profile />
+          <FiChevronDown />
+        </OpitionsProfile>
+      </div>
+    </Container>
   );
 };
 
