@@ -2,6 +2,7 @@ import React from 'react';
 
 import formatReal from "~/utils/formatReal";
 import { FiTrash2 } from 'react-icons/fi';
+import { useSelector } from 'react-redux';
 
 import defaultImg from '~/assets/svg/pizza.svg';
 
@@ -20,7 +21,7 @@ import {
 import {ProductContainer, LogoImg, Options} from '../styles';
 
 
-const ProductCart = ({ data, removeProduct, addProduct, countproduct }) => {
+const ProductCart = ({ data, removeProduct, addProduct, clearProduct }) => {
   return (
     <Container>
       <ProductContainer>
@@ -42,12 +43,12 @@ const ProductCart = ({ data, removeProduct, addProduct, countproduct }) => {
           <button type="button" onClick={removeProduct}>
             -
           </button>
-          <p>{countproduct}</p>
+          <p>{data?.quantity}</p>
           <button type="button" onClick={addProduct}>
             +
           </button>
         </Select>
-          <RemoveButton onClick={() => console.log('remover')}>
+          <RemoveButton onClick={clearProduct}>
             <FiTrash2 size={20} />
           </RemoveButton>
       </Options>

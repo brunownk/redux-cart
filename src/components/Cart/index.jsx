@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 
 import Grid from '@material-ui/core/Grid';
+import { useSelector } from 'react-redux';
 
 import Button from '~/components/Button';
 import ProductCard from '~/components/Cards/Products';
+import formatReal from '~/utils/formatReal';
 
 import {
   Container,
@@ -13,8 +15,15 @@ import {
 } from './styles';
 
 function Cart() {
+  const bag = useSelector((state) => state.bag);
   const [loading, setLoading] = useState(false);
 
+  const frete = 790;
+
+  /*   function subTotal() {
+    let amount = bag.reduce((acc, element) => )
+  }
+ */
   function handleClick() {
     setLoading(true);
     setTimeout(() => setLoading(false), 3000);
@@ -24,13 +33,12 @@ function Cart() {
       <Content>
         <ProductsContainer>
           <Grid container spacing={4}>
-            <Grid item xs={12}>
-              <ProductCard cart />
-            </Grid>
-
-            <Grid item xs={12}>
-              <ProductCard cart />
-            </Grid>
+            {bag.length > 0 &&
+              bag.map((element) => (
+                <Grid item xs={12}>
+                  <ProductCard data={element} cart />
+                </Grid>
+              ))}
           </Grid>
         </ProductsContainer>
         <ValueContainer>
@@ -40,7 +48,7 @@ function Cart() {
           </span>
           <span>
             <p>Entrega</p>
-            <p>R$7,90</p>
+            <p>R$ {formatReal(frete)}</p>
           </span>
           <span>
             <p>Total</p>

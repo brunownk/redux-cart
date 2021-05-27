@@ -1,6 +1,7 @@
 import React from 'react';
 
 import formatReal from "~/utils/formatReal";
+import { useSelector } from 'react-redux';
 
 import defaultImg from '~/assets/svg/pizza.svg';
 
@@ -16,7 +17,10 @@ import {
 
 import {ProductContainer, LogoImg, Options} from '../styles';
 
-const Product = ({ data, addProduct, removeProduct, countproduct }) => {
+const Product = ({ data, addProduct, removeProduct, quantity }) => {
+  const bag = useSelector((state) => state.bag);
+  const product = bag.find(element => element._id === data._id);
+
   return (
     <Container>
       <ProductContainer>
@@ -37,7 +41,7 @@ const Product = ({ data, addProduct, removeProduct, countproduct }) => {
           <button type="button" onClick={removeProduct}>
             -
           </button>
-          <p>{countproduct}</p>
+          <p>{quantity}</p>
           <button type="button" onClick={addProduct}>
             +
           </button>

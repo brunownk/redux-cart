@@ -1,26 +1,44 @@
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, compose, applyMiddleware } from 'redux';
 import { persistReducer, persistStore } from 'redux-persist';
+import {
+  seamlessImmutableReconciler,
+  seamlessImmutableTransformCreator,
+} from 'redux-persist-seamless-immutable';
 import storage from 'redux-persist/lib/storage';
 import createSagaMiddleware from 'redux-saga';
 
-import reducers from './modules/rootReducer';
-import sagas from './modules/rootSaga';
+import rootReducer from './ducks';
+import rootSaga from './sagas';
+
+const transformerConfig = {
+  whitelistPerReducer: {
+    auth: ['token', 'signed'],
+  },
+  blacklistPerReducer: {
+    auth: ['loading'],
+  },
+};
+
+const persistConfig = {
+  key: 'boilerplate', // trocar de acordo com projeto
+  storage,
+  stateReconciler: seamlessImmutableReconciler,
+  transforms: [seamlessImmutableTransformCreator(transformerConfig)],
+};
+
+const persistedReducer = persistReducer(persistConfig, rootReducer);
+
+const middlewares = [];
 
 const sagaMiddleware = createSagaMiddleware();
-const middlewares = [sagaMiddleware];
 
-const persistedReducer = persistReducer(
-  {
-    key: 'boilerplate', // Muda de acordo com projeto
-    storage,
-    whitelist: ['auth'],
-  },
-  reducers
-);
+middlewares.push(sagaMiddleware);
 
-const store = createStore(persistedReducer, applyMiddleware(...middlewares));
+const composer = compose(applyMiddleware(...middlewares));
+
+const store = createStore(persistedReducer, composer);
 const persistor = persistStore(store);
 
-sagaMiddleware.run(sagas);
+sagaMiddleware.run(rootSaga);
 
 export { store, persistor };

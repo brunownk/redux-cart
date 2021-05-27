@@ -1,24 +1,63 @@
-import React, { useCallback, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import PropTypes from 'prop-types';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { Creators as BagActions } from '~/store/ducks/bag';
 
 import Product from './Product';
 import ProductCart from './ProductCart';
 
 const Card = ({ cart, data }) => {
-  const [countproduct, setCountProduct] = useState(0);
+  const [quantity, setQuantity] = useState(0);
 
-  const addProduct = useCallback(() => {
-    setCountProduct(countproduct + 1);
-  }, [countproduct]);
+  const dispatch = useDispatch();
+  const bag = useSelector((state) => state.bag);
+  
+  function verifyQuantity(data) {
+    if (!cart) {
+      const product = bag.find((element) => element._id === data._id);
+      product ? setQuantity(product.quantity) : setQuantity(0);
+      return
+    }
+  
+    if (data?.quantity) {
+      setQuantity(data.quantity);
+      return
+    }
+  }
 
-  const removeProduct = useCallback(() => {
-    if (
-      countproduct === 0
-        ? setCountProduct(0)
-        : setCountProduct(countproduct - 1)
-    );
-  }, [countproduct]);
+  function addProduct() {
+    const newQuantity = quantity + 1;
+    setQuantity(newQuantity);
+    dispatch(BagActions.addProduct(data, newQuantity));
+  }
+
+  function removeProduct() {
+    if (quantity < 1) {
+      return;
+    }
+
+    if (quantity === 1) {
+      const newQuantity = 0;
+      setQuantity(newQuantity);
+      dispatch(BagActions.removeProduct(data._id));
+    } else {
+      const newQuantity = quantity - 1;
+      setQuantity(newQuantity);
+      dispatch(BagActions.addProduct(data, newQuantity));
+    }
+  }
+
+  function clearProduct() {
+    const newQuantity = 0;
+    setQuantity(newQuantity);
+    dispatch(BagActions.removeProduct(data._id));
+  }
+
+  useEffect(() => {
+    verifyQuantity(data);
+  }, [bag])
 
   return (
     <>
@@ -27,14 +66,14 @@ const Card = ({ cart, data }) => {
           data={data}
           addProduct={addProduct}
           removeProduct={removeProduct}
-          countproduct={countproduct}
+          clearProduct={clearProduct}
         />
       ) : (
         <Product
           data={data}
           addProduct={addProduct}
           removeProduct={removeProduct}
-          countproduct={countproduct}
+          quantity={quantity}
         />
       )}
     </>
@@ -49,13 +88,5 @@ Card.defaultProps = {
 
 Card.propTypes = {
   cart: PropTypes.bool,
-  data: PropTypes.shape({
-    _id: PropTypes.string,
-    _active: PropTypes.bool,
-    business: PropTypes.string,
-    category: PropTypes.string,
-    imgs: PropTypes.arrayOf(PropTypes.object),
-    name: PropTypes.string,
-    pricing: PropTypes.number,
-  }).isRequired,
+  data: PropTypes.shape({}).isRequired,
 };
