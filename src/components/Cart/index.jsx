@@ -15,7 +15,7 @@ import {
 } from './styles';
 
 function Cart() {
-  const bag = useSelector((state) => state.bag);
+  const { products: bag } = useSelector((state) => state.bag);
   const [loading, setLoading] = useState(false);
 
   const frete = 790;
@@ -36,7 +36,11 @@ function Cart() {
             {bag.length > 0 &&
               bag.map((element) => (
                 <Grid item xs={12}>
-                  <ProductCard data={element} cart />
+                  <ProductCard
+                    data={element.product}
+                    quantity={element.quantity}
+                    cart
+                  />
                 </Grid>
               ))}
           </Grid>

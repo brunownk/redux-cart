@@ -9,33 +9,38 @@ export const { Types, Creators } = createActions({
 });
 
 /* Initial State */
-const INITIAL_STATE = Immutable([]);
+const INITIAL_STATE = Immutable({ products: [] });
 
 /* Reducers */
 const addProduct = (state, { product, quantity }) => {
-  let products = [...state];
+  const exists = state.products.findIndex(
+    (element) => element.product._id === product._id
+  );
 
-  const exists = products.find((element) => element._id === product._id);
-
-  if (exists) {
-    console.log(products);
-    products.map((element) => {
-      if (element._id === product._id) {
-        element.quantity = quantity;
-      }
+  if (exists === -1) {
+    return state.merge({
+      products: [...state.products, { product, quantity }],
     });
-  } else {
-    product.quantity = quantity;
-    products = [...products, product];
   }
 
-  return products;
+  const products = [...state.products];
+  products[exists] = { product, quantity };
+
+  return state.merge({
+    ...state,
+    products,
+  });
 };
 
 const removeProduct = (state, { id }) => {
-  const products = state.filter((element) => element._id !== id);
+  let products = [...state.products];
 
-  return products;
+  products = products.filter((element) => element.product._id !== id);
+
+  return state.merge({
+    ...state,
+    products,
+  });
 };
 
 const clearBag = (state) => INITIAL_STATE;

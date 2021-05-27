@@ -21,7 +21,9 @@ import {
 import {ProductContainer, LogoImg, Options} from '../styles';
 
 
-const ProductCart = ({ data, removeProduct, addProduct, clearProduct }) => {
+const ProductCart = ({ data, quantity, removeProduct, addProduct, clearProduct }) => {
+
+
   return (
     <Container>
       <ProductContainer>
@@ -40,11 +42,11 @@ const ProductCart = ({ data, removeProduct, addProduct, clearProduct }) => {
 
       <Options>
         <Select>
-          <button type="button" onClick={removeProduct}>
+          <button type="button" onClick={() => removeProduct()}>
             -
           </button>
-          <p>{data?.quantity}</p>
-          <button type="button" onClick={addProduct}>
+          <p>{quantity}</p>
+          <button type="button" onClick={() => addProduct()}>
             +
           </button>
         </Select>

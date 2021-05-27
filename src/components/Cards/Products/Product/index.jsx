@@ -17,9 +17,11 @@ import {
 
 import {ProductContainer, LogoImg, Options} from '../styles';
 
-const Product = ({ data, addProduct, removeProduct, quantity }) => {
-  const bag = useSelector((state) => state.bag);
-  const product = bag.find(element => element._id === data._id);
+const Product = ({ data, addProduct, removeProduct }) => {
+  const { products: bag } = useSelector((state) => state.bag);
+
+  const quantity = bag.find(element => element.product._id === data._id )?.quantity
+
 
   return (
     <Container>
@@ -38,11 +40,11 @@ const Product = ({ data, addProduct, removeProduct, quantity }) => {
 
       <Options>
         <Select>
-          <button type="button" onClick={removeProduct}>
+          <button type="button" onClick={() => removeProduct(quantity)}>
             -
           </button>
-          <p>{quantity}</p>
-          <button type="button" onClick={addProduct}>
+          <p>{quantity || 0}</p>
+          <button type="button" onClick={() => addProduct(quantity)}>
             +
           </button>
         </Select>

@@ -8,62 +8,38 @@ import { Creators as BagActions } from '~/store/ducks/bag';
 import Product from './Product';
 import ProductCart from './ProductCart';
 
-const Card = ({ cart, data }) => {
-  const [quantity, setQuantity] = useState(0);
-
+const Card = ({ cart, data, quantity = 0 }) => {
   const dispatch = useDispatch();
-  const bag = useSelector((state) => state.bag);
-  
-  function verifyQuantity(data) {
-    if (!cart) {
-      const product = bag.find((element) => element._id === data._id);
-      product ? setQuantity(product.quantity) : setQuantity(0);
-      return
-    }
-  
-    if (data?.quantity) {
-      setQuantity(data.quantity);
-      return
-    }
+
+  function addProduct(quantityParams) {
+    const quantityAux = quantityParams || quantity;
+
+    dispatch(BagActions.addProduct(data, quantityAux + 1));
   }
 
-  function addProduct() {
-    const newQuantity = quantity + 1;
-    setQuantity(newQuantity);
-    dispatch(BagActions.addProduct(data, newQuantity));
-  }
-
-  function removeProduct() {
-    if (quantity < 1) {
+  function removeProduct(quantityParams) {
+    const quantityAux = quantityParams || quantity;
+    if (quantityAux < 1) {
       return;
     }
 
-    if (quantity === 1) {
-      const newQuantity = 0;
-      setQuantity(newQuantity);
+    if (quantityAux === 1) {
       dispatch(BagActions.removeProduct(data._id));
     } else {
-      const newQuantity = quantity - 1;
-      setQuantity(newQuantity);
-      dispatch(BagActions.addProduct(data, newQuantity));
+      dispatch(BagActions.addProduct(data, quantityAux - 1));
     }
   }
 
   function clearProduct() {
-    const newQuantity = 0;
-    setQuantity(newQuantity);
     dispatch(BagActions.removeProduct(data._id));
   }
-
-  useEffect(() => {
-    verifyQuantity(data);
-  }, [bag])
 
   return (
     <>
       {cart ? (
         <ProductCart
           data={data}
+          quantity={quantity}
           addProduct={addProduct}
           removeProduct={removeProduct}
           clearProduct={clearProduct}
