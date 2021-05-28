@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import { Colors } from '~/styles/defaults';
 
@@ -19,6 +19,25 @@ export const Container = styled.div`
   @media (max-width: 1050px) {
     width: 100%;
     margin-top: 30px;
+  }
+`;
+
+export const EmplyBag = styled.div`
+  width: 423px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: ${Colors.card_background};
+
+  span {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+      margin-bottom: 5px;
+    }
   }
 `;
 

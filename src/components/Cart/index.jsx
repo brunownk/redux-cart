@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import Grid from '@material-ui/core/Grid';
+import { FiShoppingCart } from 'react-icons/fi';
 import { useSelector } from 'react-redux';
 
 import Button from '~/components/Button';
@@ -12,22 +13,44 @@ import {
   Content,
   ProductsContainer,
   ValueContainer,
+  EmplyBag,
 } from './styles';
 
 function Cart() {
   const { products: bag } = useSelector((state) => state.bag);
   const [loading, setLoading] = useState(false);
+  const [subTotal, setSubTotal] = useState(0);
 
   const frete = 790;
 
-  /*   function subTotal() {
-    let amount = bag.reduce((acc, element) => )
-  }
- */
   function handleClick() {
     setLoading(true);
     setTimeout(() => setLoading(false), 3000);
   }
+
+  const getTotal = () => {
+    const amount = bag.reduce((acc, item) => {
+      const productPricing = item.product.pricing;
+
+      const totalProduct = productPricing * item.quantity;
+      acc += totalProduct;
+
+      return acc;
+    }, 0);
+
+    return amount;
+  };
+
+  if (bag.length < 1)
+    return (
+      <EmplyBag>
+        <span>
+          <FiShoppingCart size={30} />
+          Não há produtos no carrinho
+        </span>
+      </EmplyBag>
+    );
+
   return (
     <Container>
       <Content>
@@ -48,7 +71,7 @@ function Cart() {
         <ValueContainer>
           <span>
             <p>Subtotal</p>
-            <p>R$204,32</p>
+            <p>R$ {formatReal(getTotal())}</p>
           </span>
           <span>
             <p>Entrega</p>
@@ -56,7 +79,7 @@ function Cart() {
           </span>
           <span>
             <p>Total</p>
-            <p>R$212,22</p>
+            <p>R$ {formatReal(getTotal() + frete)}</p>
           </span>
         </ValueContainer>
       </Content>
