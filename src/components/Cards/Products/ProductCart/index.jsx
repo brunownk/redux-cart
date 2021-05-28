@@ -2,7 +2,6 @@ import React from 'react';
 
 import formatReal from "~/utils/formatReal";
 import { FiTrash2 } from 'react-icons/fi';
-import { useSelector } from 'react-redux';
 
 import defaultImg from '~/assets/svg/pizza.svg';
 
@@ -20,10 +19,7 @@ import {
 
 import {ProductContainer, LogoImg, Options} from '../styles';
 
-
 const ProductCart = ({ data, quantity, removeProduct, addProduct, clearProduct }) => {
-
-
   return (
     <Container>
       <ProductContainer>

@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 import { Colors } from '~/styles/defaults';
 
@@ -38,6 +38,13 @@ export const EmplyBag = styled.div`
     svg {
       margin-bottom: 5px;
     }
+  }
+
+  @media (max-width: 1050px) {
+    width: 100%;
+    height: 355px;
+    margin-top: 30px;
+    margin-bottom: 30px;
   }
 `;
 

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 import Grid from '@material-ui/core/Grid';
 import { FiShoppingCart } from 'react-icons/fi';
@@ -19,7 +19,6 @@ import {
 function Cart() {
   const { products: bag } = useSelector((state) => state.bag);
   const [loading, setLoading] = useState(false);
-  const [subTotal, setSubTotal] = useState(0);
 
   const frete = 790;
 
@@ -58,7 +57,7 @@ function Cart() {
           <Grid container spacing={4}>
             {bag.length > 0 &&
               bag.map((element) => (
-                <Grid item xs={12}>
+                <Grid item xs={12} key={element.product._id}>
                   <ProductCard
                     data={element.product}
                     quantity={element.quantity}
