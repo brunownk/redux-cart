@@ -5,11 +5,11 @@ import { Route } from 'react-router-dom';
 
 import Public from '../../pages/_layouts/Public';
 
-const PublicRoute = ({ component: Component, ...rest }) => (
+const PublicRoute = ({ component: Component, title, ...rest }) => (
   <Route
     {...rest}
     render={(props) => (
-      <Public>
+      <Public name={title}>
         <Component {...props} />
       </Public>
     )}
@@ -17,6 +17,7 @@ const PublicRoute = ({ component: Component, ...rest }) => (
 );
 
 PublicRoute.propTypes = {
+  title: PropTypes.string.isRequired,
   component: PropTypes.func.isRequired,
 };
 

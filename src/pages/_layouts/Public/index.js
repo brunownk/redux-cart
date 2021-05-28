@@ -8,10 +8,10 @@ import PageLinks from '~/components/PageLinks';
 
 import { Container, Content } from './styles';
 
-const Public = ({ children }) => (
+const Public = ({ children, name }) => (
   <Container>
     <Menu />
-    <PageLinks />
+    <PageLinks name={name} />
     <Content>
       {children}
       <Cart />

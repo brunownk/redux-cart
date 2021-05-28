@@ -12,8 +12,12 @@ const Routes = () => {
   return (
     <BrowserRouter>
       <Switch>
-        <PublicRoute path="/" component={Home} exact />
-        <PublicRoute path="/products/business/:id" component={Establishment} />
+        <PublicRoute title="Home" path="/" component={Home} exact />
+        <PublicRoute
+          title="Establishment"
+          path="/products/business/:id"
+          component={Establishment}
+        />
 
         <AuthRoute path="*" component={NotFound} />
       </Switch>

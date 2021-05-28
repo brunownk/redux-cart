@@ -10,7 +10,7 @@ import api from '~/services/api';
 
 import { Container } from './styles';
 
-function Establishment() {
+function Establishment(page) {
   const [business, setBusiness] = useState({});
   const [products, setProducts] = useState([]);
 
@@ -48,7 +48,7 @@ function Establishment() {
             </Grid>
           ))}
       </Grid>
-      <Pagination numbPages={2} />
+      <Pagination numbPages={1} />
     </Container>
   );
 }

@@ -1,20 +1,25 @@
 import React, { useEffect, useState } from 'react';
 
 import Grid from '@material-ui/core/Grid';
+import { AiOutlineSearch } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
 
 import Card from '~/components/Cards/Establishment';
-import InputSearch from '~/components/InputSearch';
+/* import InputSearch from '~/components/InputSearch'; */
 import Pagination from '~/components/Pagination';
 import api from '~/services/api';
 
-import { Container } from './styles';
+import { Container, InputSearch, Search } from './styles';
 
 function Home() {
   const [business, setBusiness] = useState([]);
 
-  async function fetchEstablishments() {
-    const { data } = await api.get('/business');
+  async function fetchEstablishments(e) {
+    const { data } = await api.get(`/business/`, {
+      params: {
+        perPage: 12,
+      },
+    });
 
     setBusiness(data.data);
   }
@@ -24,12 +29,14 @@ function Home() {
   }, []);
   return (
     <Container>
-      <InputSearch
-        maxWidth={303}
-        name="search"
-        placeholder="Busque por um produto"
-        margin={34}
-      />
+      <Search>
+        <InputSearch
+          name="search"
+          placeholder="Busque por um estabelecimento"
+          onChange={(e) => fetchEstablishments(e.target.value)}
+        />
+        <AiOutlineSearch size={20} />
+      </Search>
 
       <Grid container spacing={3}>
         {business.length > 0 &&
@@ -42,7 +49,7 @@ function Home() {
           ))}
       </Grid>
 
-      <Pagination numbPages={2} />
+      <Pagination numbPages={1} />
     </Container>
   );
 }

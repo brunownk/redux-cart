@@ -5,7 +5,7 @@ import { Link, useLocation } from 'react-router-dom';
 
 import { Container } from './styles';
 
-function PageLinks() {
+function PageLinks({ name }) {
   const { pathname } = useLocation();
   const [, , business, ,] = pathname.split('/');
 
