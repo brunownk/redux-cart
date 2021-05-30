@@ -8,7 +8,7 @@ import { Creators as BagActions } from '~/store/ducks/bag';
 import Product from './Product';
 import ProductCart from './ProductCart';
 
-const Card = ({ cart, data, quantity = 0 }) => {
+const Card = ({ cart, data, quantity }) => {
   const dispatch = useDispatch();
 
   function addProduct(quantityParams) {
@@ -60,9 +60,11 @@ export default Card;
 
 Card.defaultProps = {
   cart: false,
+  quantity: 0,
 };
 
 Card.propTypes = {
   cart: PropTypes.bool,
+  quantity: PropTypes.number,
   data: PropTypes.shape({}).isRequired,
 };

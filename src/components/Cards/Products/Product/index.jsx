@@ -20,9 +20,7 @@ import {ProductContainer, LogoImg, Options} from '../styles';
 const Product = ({ data, addProduct, removeProduct }) => {
   const { products: bag } = useSelector((state) => state.bag);
 
-  const quantity = bag.find(element => element.product._id === data._id )?.quantity
-
-
+  const quantity = bag.find(element => element.product._id === data._id )?.quantity;
   return (
     <Container>
       <ProductContainer>
