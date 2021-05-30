@@ -6,7 +6,6 @@ import { useSelector } from 'react-redux';
 
 import Button from '~/components/Button';
 import ProductCard from '~/components/Cards/Products';
-import api from '~/services/api';
 import formatReal from '~/utils/formatReal';
 
 import {

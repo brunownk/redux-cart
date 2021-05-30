@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 import Grid from '@material-ui/core/Grid';
+import Loader from 'react-loader-spinner';
 import { useLocation } from 'react-router';
 
 import EstablishmentCard from '~/components/Cards/Establishment';
@@ -13,41 +14,46 @@ import { Container } from './styles';
 function Establishment(page) {
   const [business, setBusiness] = useState({});
   const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const { pathname } = useLocation();
   const [, , , id] = pathname.split('/');
 
-  async function fetchProducts(businessId) {
-    const { data } = await api.get(`/product/business/${businessId}`);
+  async function fetchData(id) {
+    setLoading(true);
 
-    setProducts(data.data);
-  }
+    const { data: businessData } = await api.get(`business/${id}`);
+    setBusiness(businessData);
 
-  async function fetchEstablishment(businessId) {
-    const { data } = await api.get(`business/${businessId}`);
+    const { data: productsData } = await api.get(`/product/business/${id}`);
+    setProducts(productsData.data);
 
-    setBusiness(data);
+    setLoading(false);
   }
 
   useEffect(() => {
-    fetchProducts(id);
-    fetchEstablishment(id);
+    fetchData(id);
   }, [id]);
 
   return (
     <Container>
-      <Grid container spacing={4}>
-        <Grid item xs={12}>
-          <EstablishmentCard data={business} />
-        </Grid>
+      {loading ? (
+        <Loader type="TailSpin" color="#00BFFF" height={80} width={80} />
+      ) : (
+        <Grid container spacing={4}>
+          <Grid item xs={12}>
+            <EstablishmentCard data={business} />
+          </Grid>
 
-        {products.length > 0 &&
-          products.map((product) => (
-            <Grid key={product.name} item xs={12} md={6} lg={4} xl={3}>
-              <ProductCard data={product} />
-            </Grid>
-          ))}
-      </Grid>
+          {products.length > 0 &&
+            products.map((product) => (
+              <Grid key={product.name} item xs={12} md={6} lg={4} xl={3}>
+                <ProductCard data={product} />
+              </Grid>
+            ))}
+        </Grid>
+      )}
+
       <Pagination numbPages={1} />
     </Container>
   );
