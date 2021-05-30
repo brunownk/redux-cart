@@ -105,3 +105,15 @@ export const ValueContainer = styled.div`
     }
   }
 `;
+
+export const EstablishmentName = styled.h1`
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 23px;
+
+  color: ${Colors.links};
+`;
+
+export const ProductContainer = styled.div`
+  padding: 0 14.62px 0 16px;
+`;

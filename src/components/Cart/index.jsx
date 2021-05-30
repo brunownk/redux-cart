@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux';
 
 import Button from '~/components/Button';
 import ProductCard from '~/components/Cards/Products';
+import api from '~/services/api';
 import formatReal from '~/utils/formatReal';
 
 import {
@@ -14,11 +15,14 @@ import {
   ProductsContainer,
   ValueContainer,
   EmplyBag,
+  EstablishmentName,
+  ProductContainer,
 } from './styles';
 
 function Cart() {
   const { products: bag } = useSelector((state) => state.bag);
   const [loading, setLoading] = useState(false);
+  /*   const [bundledProducts, setBundledProducts] = useState([]); */
 
   const frete = 790;
 
@@ -58,11 +62,14 @@ function Cart() {
             {bag.length > 0 &&
               bag.map((element) => (
                 <Grid item xs={12} key={element.product._id}>
-                  <ProductCard
-                    data={element.product}
-                    quantity={element.quantity}
-                    cart
-                  />
+                  <ProductContainer>
+                    <EstablishmentName>Razzo Pizza</EstablishmentName>
+                    <ProductCard
+                      data={element.product}
+                      quantity={element.quantity}
+                      cart
+                    />
+                  </ProductContainer>
                 </Grid>
               ))}
           </Grid>

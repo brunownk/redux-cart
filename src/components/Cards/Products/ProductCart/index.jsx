@@ -7,7 +7,6 @@ import defaultImg from '~/assets/svg/pizza.svg';
 
 import {
   Container,
-  EstablishmentName,
   Content,
   Info,
   Title,
@@ -23,8 +22,6 @@ const ProductCart = ({ data, quantity, removeProduct, addProduct, clearProduct }
   return (
     <Container>
       <ProductContainer>
-        <EstablishmentName>RodaPizza</EstablishmentName>
-
         <Content>
           <LogoImg src={data?.imgs[0]?.url || defaultImg} alt="Product" />
 

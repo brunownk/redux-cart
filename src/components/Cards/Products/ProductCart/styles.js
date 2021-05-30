@@ -11,22 +11,11 @@ import {
 
 export const Container = styled(ProductContainer)`
   flex-direction: row;
-  padding: 0 14.62px 0 16px;
 `;
 
 export const Content = styled.div`
   display: flex;
   flex-direction: row;
-`;
-
-export const EstablishmentName = styled.h1`
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 23px;
-
-  margin-bottom: 8px;
-
-  color: ${Colors.links};
 `;
 
 export const Info = styled(ProductInfo)`
