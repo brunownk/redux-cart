@@ -28,7 +28,7 @@
     "@material-ui/lab": "^4.0.0-alpha.57",
     "@unform/core": "^2.1.3",
     "@unform/web": "^2.1.3",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "customize-cra": "^1.0.0",
     "date-fns": "^2.14.0",
     "hamburger-react": "^2.4.0",
